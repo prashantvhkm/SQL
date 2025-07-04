@@ -1,0 +1,59 @@
+/* create table user */
+create table users(id int,fristName varchar(40),lastName varchar(40),department varchar(40),age int);
+/* using alter update tha table */
+/* add address feel */
+alter table users add address varchar(50);
+/* add salary feel */
+alter table users add salary int;
+/* add modify a int to decimal */
+alter table users modify salary decimal(10,2);
+/* rename tha address to feedback */
+alter table users rename column address to feedback;
+/* remove tha feedback feel */
+alter table users drop column feedback;
+
+/* add address feel */
+alter table users add address varchar(50);
+desc users;
+/*
+Table	Column	Data Type	Length	Precision	Scale	Primary Key	Nullable	Default	Comment
+USERS	ID	NUMBER	22	-	0	-	nullable	-	-
+FRISTNAME	VARCHAR2	40	-	-	-	nullable	-	-
+LASTNAME	VARCHAR2	40	-	-	-	nullable	-	-
+DEPARTMENT	VARCHAR2	40	-	-	-	nullable	-	-
+AGE	NUMBER	22	-	0	-	nullable	-	-
+SALARY	   NUMBER	-	10	2	-	nullable	-	-
+ADDRESS 	VARCHAR2	50	-	-	-	nullable	-	- */
+
+/* insert */
+/* only one data insert in table */
+insert into users values(1,'tom','tom','cs',21,10000.00,'mumbai');
+
+/* only multi data insert in table */
+insert all
+into users values(2,'tom2','tom2','cs',21,10000.00,'mumbai')
+into users values(3,'tom3','tom3','com',22,12000.00,'mumbai')
+into users values(4,'tom4','tom4','IT',18,25000.00,'mumbai')
+into users values(5,'tom5','tom5','art',30,200000.00,'mumbai')
+select * from dual;
+
+
+-- show table data --
+select *from users;
+select fristName,lastName,age,salary from users;
+SELECT CONCAT(fristName, lastName) FROM users;
+select concat(fristName,lastName) as fullName from users;
+
+-- update table --
+update users set salary= 50000.00 where id=3;
+update users set age=25;
+
+-- delete --
+delete from users where id=1;
+
+-- truncate table---
+truncate table users;
+
+-- drop table --
+drop table users;
+
