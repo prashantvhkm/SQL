@@ -1,59 +1,54 @@
-/* create table user */
-create table users(id int,fristName varchar(40),lastName varchar(40),department varchar(40),age int);
-/* using alter update tha table */
-/* add address feel */
-alter table users add address varchar(50);
-/* add salary feel */
-alter table users add salary int;
-/* add modify a int to decimal */
-alter table users modify salary decimal(10,2);
-/* rename tha address to feedback */
-alter table users rename column address to feedback;
-/* remove tha feedback feel */
-alter table users drop column feedback;
+/* 1. Create Table */
+CREATE TABLE users (
+    id INT,
+    fristName VARCHAR(40),
+    lastName VARCHAR(40),
+    department VARCHAR(40),
+    age INT
+);
 
-/* add address feel */
-alter table users add address varchar(50);
-desc users;
-/*
-Table	Column	Data Type	Length	Precision	Scale	Primary Key	Nullable	Default	Comment
-USERS	ID	NUMBER	22	-	0	-	nullable	-	-
-FRISTNAME	VARCHAR2	40	-	-	-	nullable	-	-
-LASTNAME	VARCHAR2	40	-	-	-	nullable	-	-
-DEPARTMENT	VARCHAR2	40	-	-	-	nullable	-	-
-AGE	NUMBER	22	-	0	-	nullable	-	-
-SALARY	   NUMBER	-	10	2	-	nullable	-	-
-ADDRESS 	VARCHAR2	50	-	-	-	nullable	-	- */
+/* 2. Alter Table - Add New Columns */
+ALTER TABLE users ADD address VARCHAR(50);
+ALTER TABLE users ADD salary INT;
 
-/* insert */
-/* only one data insert in table */
-insert into users values(1,'tom','tom','cs',21,10000.00,'mumbai');
+/* 3. Modify Column Type */
+ALTER TABLE users MODIFY salary DECIMAL(10,2);
 
-/* only multi data insert in table */
-insert all
-into users values(2,'tom2','tom2','cs',21,10000.00,'mumbai')
-into users values(3,'tom3','tom3','com',22,12000.00,'mumbai')
-into users values(4,'tom4','tom4','IT',18,25000.00,'mumbai')
-into users values(5,'tom5','tom5','art',30,200000.00,'mumbai')
-select * from dual;
+/* 4. Rename Column */
+ALTER TABLE users RENAME COLUMN address TO feedback;
 
+/* 5. Drop Column */
+ALTER TABLE users DROP COLUMN feedback;
 
--- show table data --
-select *from users;
-select fristName,lastName,age,salary from users;
+/* 6. Add Address Again */
+ALTER TABLE users ADD address VARCHAR(50);
+
+/* 7. Insert Single Row */
+INSERT INTO users VALUES (1, 'tom', 'tom', 'cs', 21, 10000.00, 'mumbai');
+
+/* 8. Insert Multiple Rows (Oracle syntax) */
+INSERT ALL
+INTO users VALUES (2, 'tom2', 'tom2', 'cs', 21, 10000.00, 'mumbai')
+INTO users VALUES (3, 'tom3', 'tom3', 'com', 22, 12000.00, 'mumbai')
+INTO users VALUES (4, 'tom4', 'tom4', 'IT', 18, 25000.00, 'mumbai')
+INTO users VALUES (5, 'tom5', 'tom5', 'art', 30, 200000.00, 'mumbai')
+SELECT * FROM dual;
+
+/* 9. Select Queries */
+SELECT * FROM users;
+SELECT fristName, lastName, age, salary FROM users;
 SELECT CONCAT(fristName, lastName) FROM users;
-select concat(fristName,lastName) as fullName from users;
+SELECT CONCAT(fristName, ' ', lastName) AS fullName FROM users;
 
--- update table --
-update users set salary= 50000.00 where id=3;
-update users set age=25;
+/* 10. Update */
+UPDATE users SET salary = 50000.00 WHERE id = 3;
+UPDATE users SET age = 25;  -- Caution: Updates all users
 
--- delete --
-delete from users where id=1;
+/* 11. Delete */
+DELETE FROM users WHERE id = 1;
 
--- truncate table---
-truncate table users;
+/* 12. Truncate */
+TRUNCATE TABLE users;
 
--- drop table --
-drop table users;
-
+/* 13. Drop */
+DROP TABLE users;
